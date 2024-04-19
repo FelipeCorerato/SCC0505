@@ -1,0 +1,57 @@
+Instruções de Uso do Simulador de Autômatos Finitos
+
+1. Introdução:
+O Simulador de Autômatos Finitos é uma aplicação que permite a criação, configuração e simulação de autômatos finitos determinísticos (AFDs). Com este programa, você pode definir os estados, símbolos do alfabeto, transições e cadeias de entrada para simular o comportamento de um AFD.
+
+2. Formato do Arquivo de Entrada:
+O programa requer um arquivo de entrada no formato especificado abaixo. Certifique-se de seguir este formato ao criar seu arquivo de entrada.
+
+- A primeira linha deve conter o número total de estados no autômato.
+- A segunda linha deve conter o número total de símbolos no alfabeto do autômato, seguido pelos próprios símbolos separados por espaços.
+- A terceira linha deve conter o número total de estados finais no autômato, seguido pelos nomes dos estados finais separados por espaços.
+- As próximas linhas devem conter as transições do autômato, uma por linha, no formato: estado_origem símbolo_transicao estado_destino.
+- A penúltima linha deve conter o número total de cadeias a serem testadas no autômato.
+- As últimas linhas devem conter as cadeias de entrada a serem testadas no autômato, uma por linha.
+
+Exemplo de arquivo de entrada:
+3
+2 a b
+1 q2
+4
+q0 a q1
+q0 b q2
+q1 a q1
+q1 b q2
+2
+aab
+bb
+
+3. Execução do Programa:
+
+ - Usando o Executável para Windows
+
+Dê um duplo clique no arquivo executável "nome-do-arquivo.exe".
+O programa será iniciado automaticamente.
+
+fornecendo o caminho para o arquivo como argumento de linha de comando. O programa lerá o arquivo, configurará o autômato e realizará a simulação. Os resultados da simulação serão salvos em um arquivo de saída com o mesmo nome do arquivo de entrada, mas com a extensão ".out".
+
+ - Usando o Arquivo JAR (Java Archive)
+
+Após criar seu arquivo de entrada, você pode executar o programa fornecendo o caminho para o arquivo como argumento de linha de comando. O programa lerá o arquivo, configurará o autômato e realizará a simulação. Os resultados da simulação serão salvos em um arquivo de saída com o mesmo nome do arquivo de entrada, mas com a extensão ".out".
+
+Exemplo de execução:
+java -jar simulador.jar meu_autômato.txt
+
+4. Formato do Arquivo de Saída:
+O arquivo de saída conterá os resultados da simulação para cada cadeia de entrada testada no autômato. Cada linha do arquivo de saída corresponderá a uma cadeia de entrada, seguida de "aceita" se o autômato aceitar a cadeia ou "rejeita" caso contrário.
+
+Exemplo de arquivo de saída:
+aceita
+rejeita
+
+5. Observações:
+- Certifique-se de que está passando o caminho do arquivo completo para o programa.
+- Ao criar o arquivo de entrada, evite adicionar espaços em branco desnecessários ou caracteres especiais.
+- Verifique se os nomes dos estados e símbolos estão corretamente especificados e são consistentes com as transições do autômato.
+
+Agora você está pronto para criar seu próprio autômato finito e simular seu comportamento com o Simulador de Autômatos Finitos! Divirta-se explorando as possibilidades!
