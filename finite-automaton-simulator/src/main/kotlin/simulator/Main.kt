@@ -55,23 +55,7 @@ fun main() {
     }
 
     val answers = simulateAutomaton(finiteAutomaton)
-
-    val newFileName = fileName.substring(0, fileName.lastIndexOf('.'))
-    val outputFileName = "$newFileName.out"
-    try {
-        val outputFile = File(outputFileName)
-        outputFile.createNewFile()
-        outputFile.bufferedWriter().use { writer ->
-            for (stringChain in finiteAutomaton.stringChains) {
-                val label = "${if (answers[stringChain.value] == true) LabelsUtils.ACCEPTED else LabelsUtils.REJECTED}\n"
-                writer.write(label)
-            }
-        }
-    } catch (ex: Exception) {
-        throw RuntimeException(ex)
-    }
-
-    println("${LabelsUtils.RESULTS_INPUT} $outputFileName.")
+    generateResult(fileName, finiteAutomaton, answers)
 }
 
 fun simulateAutomaton(automaton: FiniteAutomaton): Map<String, Boolean> {
@@ -137,4 +121,23 @@ fun simulateInnerAutomaton(automaton: FiniteAutomaton, actualState: State, strin
     }
 
     return false
+}
+
+fun generateResult(fileName: String, finiteAutomaton: FiniteAutomaton, answers: Map<String, Boolean>) {
+    val newFileName = fileName.substring(0, fileName.lastIndexOf('.'))
+    val outputFileName = "$newFileName.out"
+    try {
+        val outputFile = File(outputFileName)
+        outputFile.createNewFile()
+        outputFile.bufferedWriter().use { writer ->
+            for (stringChain in finiteAutomaton.stringChains) {
+                val label = "${if (answers[stringChain.value] == true) LabelsUtils.ACCEPTED else LabelsUtils.REJECTED}\n"
+                writer.write(label)
+            }
+        }
+    } catch (ex: Exception) {
+        throw RuntimeException(ex)
+    }
+
+    println("${LabelsUtils.RESULTS_INPUT} $outputFileName.")
 }
